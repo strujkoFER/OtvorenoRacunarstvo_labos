@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Programming languages table for college subject Otvoreno Racunarstvo">
+  <meta name="keywords" content="Table, Programming, Programming languages, FER, Otovreno racunarstvo">
+  <meta name="author" content="David Kovčo">
+  <title>My Page</title>
+</head>
+<body>
+<header>
+  <h1 class="title">Programming languages table</h1>
+</header>
+
+<main>
+  <div class="table">
+    <div class="table-top-box">
+      <select [(ngModel)]="field">
+        @for(header of appService.selectOptions; track header){
+          <option [value]="header">
+            {{ header }}
+          </option>
+        }
+      </select>
+
+      <input type="text" [(ngModel)]="param" placeholder="Enter value" />
+
+      <button (click)="applyFilter()">Filter</button>
+      <button (click)="clearFilter()">Clear filters</button>
+    </div>
+    <div class="table-bottom-box">
+      <table>
+        <tr>
+          @for(column of appService.headers; track column){
+            <th>
+              {{column}}
+            </th>
+          }
+        </tr>
+        @for(row of appService.tableStorage; track row){
+          <tr>
+            <th>
+              {{row.name}}
+            </th>
+            <th>
+              {{row.yearCreated}}
+            </th>
+            <th>
+              {{row.creator}}
+            </th>
+            <th>
+              {{row.popularFrameworks}}
+            </th>
+            <th>
+              {{row.primaryUses}}
+            </th>
+            <th>
+              {{row.description}}
+            </th>
+            <th>
+              {{row.website}}
+            </th>
+            <th>
+              {{row.typingDisciplineTypeChecking}}
+            </th>
+            <th>
+              {{row.typingDisciplineStrength}}
+            </th>
+            <th>
+              {{row.programmingStyle}}
+            </th>
+          </tr>
+        }
+      </table>
+    </div>
+  </div>
+</main>
+</body>
+</html>
+
