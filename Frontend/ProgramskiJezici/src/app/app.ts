@@ -157,7 +157,7 @@ export class App {
                 data.push([
                     element.name,
                     element.yearCreated,
-                    element.creator,
+                    element.creator.includes(",") ? `"${element.creator}"`: element.creator,
                     `"${element.popularFrameworks.join(",")}"`,
                     `"${element.primaryUses.join(",")}"`,
                     `"${element.description}"`,
