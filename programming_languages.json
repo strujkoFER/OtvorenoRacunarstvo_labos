@@ -1,0 +1,260 @@
+[
+  {
+    "name": "Python",
+    "creator": "Guido van Rossum",
+    "website": "https://www.python.org/",
+    "description": "Python is a high-level, interpreted language known for its readability and versatility. Its large ecosystem and community make it ideal for beginners and professionals alike.",
+    "primary_uses": [
+      "Web development",
+      "Data science",
+      "Automation",
+      "Machine learning",
+      "Scripting"
+    ],
+    "year_created": 1991,
+    "programming_style": [
+      "Object-oriented",
+      "Procedural",
+      "Functional"
+    ],
+    "typing_discipline": {
+      "strength": "Strong",
+      "type_checking": "Dynamic"
+    },
+    "popular_frameworks": [
+      "Django",
+      "Flask",
+      "FastAPI",
+      "PyTorch"
+    ]
+  },
+  {
+    "name": "Java",
+    "creator": "James Gosling",
+    "website": "https://www.oracle.com/java",
+    "description": "Java is a class-based, object-oriented language designed to be portable and secure. It runs on the JVM and is widely used in enterprise and mobile applications.",
+    "primary_uses": [
+      "Enterprise applications",
+      "Android development",
+      "Backend systems"
+    ],
+    "year_created": 1995,
+    "programming_style": [
+      "Object-oriented",
+      "Imperative",
+      "Concurrent"
+    ],
+    "typing_discipline": {
+      "strength": "Strong",
+      "type_checking": "Static"
+    },
+    "popular_frameworks": [
+      "Spring",
+      "Hibernate",
+      "Jakarta EE"
+    ]
+  },
+  {
+    "name": "C",
+    "creator": "Dennis Ritchie",
+    "website": "https://www.c-language.org",
+    "description": "C is a foundational programming language that influenced many modern languages. It provides low-level access to memory and hardware, making it ideal for performance-critical software.",
+    "primary_uses": [
+      "Operating systems",
+      "Embedded systems",
+      "Compilers",
+      "System programming"
+    ],
+    "year_created": 1972,
+    "programming_style": [
+      "Procedural",
+      "Structured"
+    ],
+    "typing_discipline": {
+      "strength": "Weak",
+      "type_checking": "Static"
+    },
+    "popular_frameworks": [
+      "GTK"
+    ]
+  },
+  {
+    "name": "C++",
+    "creator": "Bjarne Stroustrup",
+    "website": "https://isocpp.org/",
+    "description": "C++ builds on C by adding object-oriented and generic programming features. It balances control over hardware with high-level abstractions, making it powerful but complex.",
+    "primary_uses": [
+      "Game development",
+      "High-performance applications",
+      "System software"
+    ],
+    "year_created": 1985,
+    "programming_style": [
+      "Object-oriented",
+      "Procedural",
+      "Generic"
+    ],
+    "typing_discipline": {
+      "strength": "Strong",
+      "type_checking": "Static"
+    },
+    "popular_frameworks": [
+      "Qt",
+      "Boost"
+    ]
+  },
+  {
+    "name": "JavaScript",
+    "creator": "Brendan Eich",
+    "website": "https://www.oracle.com/developer/javascript",
+    "description": "JavaScript is the language of the web, enabling interactive and dynamic web pages. It runs in browsers and on servers via Node.js, and supports both functional and OOP styles.",
+    "primary_uses": [
+      "Web development",
+      "Server-side scripting",
+      "Desktop and mobile apps"
+    ],
+    "year_created": 1995,
+    "programming_style": [
+      "Event-driven",
+      "Functional",
+      "Imperative"
+    ],
+    "typing_discipline": {
+      "strength": "Weak",
+      "type_checking": "Dynamic"
+    },
+    "popular_frameworks": [
+      "React",
+      "Angular",
+      "Node.js",
+      "Express"
+    ]
+  },
+  {
+    "name": "Go",
+    "creator": "Robert Griesemer, Rob Pike, and Ken Thompson",
+    "website": "https://go.dev/",
+    "description": "Go (or Golang) is a statically typed, compiled language designed for simplicity, concurrency, and performance. It’s widely used for scalable backend systems and cloud infrastructure.",
+    "primary_uses": [
+      "Cloud services",
+      "Backend APIs",
+      "DevOps tools",
+      "Networking"
+    ],
+    "year_created": 2009,
+    "programming_style": [
+      "Concurrent",
+      "Imperative",
+      "Structured"
+    ],
+    "typing_discipline": {
+      "strength": "Strong",
+      "type_checking": "Static"
+    },
+    "popular_frameworks": [
+      "Gin",
+      "Beego",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Rust",
+    "creator": "Graydon Hoare",
+    "website": "https://www.rust-lang.org/",
+    "description": "Rust is designed for safety and concurrency without garbage collection. It guarantees memory safety through its ownership model, making it popular for system-level and high-performance code.",
+    "primary_uses": [
+      "Systems programming",
+      "WebAssembly",
+      "Performance-critical software"
+    ],
+    "year_created": 2006,
+    "programming_style": [
+      "Functional",
+      "Imperative",
+      "Concurrent"
+    ],
+    "typing_discipline": {
+      "strength": "Strong",
+      "type_checking": "Static"
+    },
+    "popular_frameworks": [
+      "Rocket",
+      "Actix"
+    ]
+  },
+  {
+    "name": "C#",
+    "creator": "Microsoft",
+    "website": "https://dotnet.microsoft.com/en-us/languages/csharp",
+    "description": "C# is a modern, multi-paradigm language developed by Microsoft. It emphasizes type safety, memory management through garbage collection, and productivity features like LINQ, async programming, and rich tooling in Visual Studio.",
+    "primary_uses": [
+      "Game development",
+      "Desktop and web applications",
+      "Cloud services"
+    ],
+    "year_created": 2000,
+    "programming_style": [
+      "Object-oriented",
+      "Functional",
+      "Event-driven"
+    ],
+    "typing_discipline": {
+      "strength": "Strong",
+      "type_checking": "Static"
+    },
+    "popular_frameworks": [
+      ".NET",
+      "ASP.NET Core"
+    ]
+  },
+  {
+    "name": "PHP",
+    "creator": "Rasmus Lerdorf",
+    "website": "https://www.php.net/",
+    "description": "PHP is a server-side scripting language designed for web development. Despite mixed opinions, it powers a significant portion of the web, including WordPress.",
+    "primary_uses": [
+      "Web development",
+      "Server-side scripting"
+    ],
+    "year_created": 1995,
+    "programming_style": [
+      "Imperative",
+      "Object-oriented",
+      "Functional"
+    ],
+    "typing_discipline": {
+      "strength": "Weak",
+      "type_checking": "Dynamic"
+    },
+    "popular_frameworks": [
+      "Laravel",
+      "Symfony",
+      "CodeIgniter"
+    ]
+  },
+  {
+    "name": "Kotlin",
+    "creator": "JetBrains",
+    "website": "https://kotlinlang.org/",
+    "description": "Kotlin is a modern JVM language that emphasizes safety and conciseness. Officially supported by Google for Android development, it interoperates seamlessly with Java and improves developer productivity.",
+    "primary_uses": [
+      "Android development",
+      "Backend systems",
+      "Cross-platform development"
+    ],
+    "year_created": 2011,
+    "programming_style": [
+      "Object-oriented",
+      "Functional"
+    ],
+    "typing_discipline": {
+      "strength": "Strong",
+      "type_checking": "Static"
+    },
+    "popular_frameworks": [
+      "Ktor",
+      "Spring Boot (Kotlin)",
+      "Jetpack Compose"
+    ]
+  }
+]
