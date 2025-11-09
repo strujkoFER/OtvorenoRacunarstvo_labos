@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, tap} from 'rxjs';
+import Ajv from "ajv";
+import {jsonShema} from "../shema/ProgrammingLanguagesShema";
 
 @Injectable({
   providedIn: 'root'
@@ -11,31 +13,34 @@ export class AppService {
   http: HttpClient;
 
   headers = [
-    "name",
-    "year_created",
-    "creator",
-    "popular_frameworks",
-    "primary_uses",
-    "description",
-    "website",
-    "type_checking",
-    "strength",
-    "programming_style",
+    "Name",
+    "Year created",
+    "Creator",
+    "Popular frameworks",
+    "Primary uses",
+    "Description",
+    "Website",
+    "Type checking",
+    "Strength",
+    "Programming style",
   ];
 
   selectOptions = [
-    "everything(wildcard)",
-    "name",
-    "year_created",
-    "creator",
-    "popular_frameworks",
-    "primary_uses",
-    "description",
-    "website",
-    "type_checking",
-    "strength",
-    "programming_style",
+      {name: "Everything (wildcard)", value: "everything(wildcard)"},
+      {name: "Name", value: "name"},
+      {name: "Year created", value: "year_created"},
+      {name: "Creator", value: "creator"},
+      {name: "Popular frameworks", value: "popular_frameworks"},
+      {name: "Primary uses", value: "primary_uses"},
+      {name: "Description", value: "description"},
+      {name: "Website", value: "website"},
+      {name: "Type checking", value: "type_checking"},
+      {name: "Strength", value: "strength"},
+      {name: "Programming style", value: "programming_style"},
   ];
+
+  private ajv = new Ajv();
+  private validate = this.ajv.compile(jsonShema);
 
   constructor(http: HttpClient) {
     this.http = http;
@@ -82,8 +87,16 @@ export class AppService {
         break;
     }
 
-    return this.http.get<any>(this.url);
-  }
+    return this.http.get<any>(this.url).pipe(
+        tap(data => {
+            const valid = this.validate(data);
+            if (!valid) {
+                console.error("JSON validation failed", this.validate.errors);
+                throw new Error("JSON validation failed");
+            }
+        })
+    );
+  };
 
   saveInTableStorage(
     name: string,

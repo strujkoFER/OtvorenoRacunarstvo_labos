@@ -18,9 +18,10 @@
   <div class="table">
     <div class="table-top-box">
       <select [(ngModel)]="field">
+          <option value="" disabled selected>Select value</option>
         @for(header of appService.selectOptions; track header){
-          <option [value]="header">
-            {{ header }}
+          <option [value]="header.value">
+            {{ header.name }}
           </option>
         }
       </select>
@@ -29,8 +30,15 @@
 
       <button (click)="applyFilter()">Filter</button>
       <button (click)="clearFilter()">Clear filters</button>
+      <button (click)="exportJSON()">Export JSON</button>
+      <button (click)="exportCSV()">Export CSV</button>
+
     </div>
-    <div class="table-bottom-box">
+    <div class="table-bottom-box"
+         (mousedown)="startDrag($event)"
+         (mousemove)="onDrag($event)"
+         (mouseup)="stopDrag()"
+         (mouseleave)="stopDrag()">
       <table>
         <tr>
           @for(column of appService.headers; track column){

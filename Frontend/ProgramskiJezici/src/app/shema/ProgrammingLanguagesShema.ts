@@ -1,0 +1,41 @@
+export const jsonShema = {
+    $schema: "http://json-schema.org/draft-07/schema#",
+    $id: "https://or.lab.hr/programmingLnaguages.json",
+    title: "Programming_languages",
+    type: "array",
+    items: {
+        type: "object",
+        properties: {
+            name: { type: "string" },
+            creator: { type: "string" },
+            website: { type: "string" },
+            description: { type: "string" },
+            primary_uses: {
+                type: "array",
+                items: { type: "string" }
+            },
+            year_created: { type: "number" },
+            programming_style: {
+                type: "array",
+                items: { type: "string" }
+            },
+            typing_discipline: {
+                type: "object",
+                properties: {
+                    strength: { type: "string" },
+                    type_checking: { type: "string" }
+                },
+                required: ["strength", "type_checking"]
+            },
+            popular_frameworks: {
+                type: "array",
+                items: { type: "string" }
+            }
+        },
+        required: [
+            "name", "creator", "website", "description",
+            "primary_uses", "year_created", "programming_style",
+            "typing_discipline", "popular_frameworks"
+        ]
+    }
+};
