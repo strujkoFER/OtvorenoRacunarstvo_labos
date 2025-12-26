@@ -1,5 +1,6 @@
 package com.backend.programski_jezici.controllers;
 
+import com.backend.programski_jezici.models.ApiWrapper;
 import com.backend.programski_jezici.models.ProgramskiJezikModel;
 import com.backend.programski_jezici.services.ProgramskiJeziciService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,87 +24,99 @@ public class ProgramskiJeziciController {
     }
 
     @GetMapping("/getAll")
-    public List<ProgramskiJezikModel> findAll() {
-        return programskiJeziciService.findAll();
+    public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAll() {
+        List<ProgramskiJezikModel> all = programskiJeziciService.findAll();
+        return ResponseEntity.ok(new ApiWrapper<>(all));
     }
 
     @GetMapping("getById/{id}")
-    public ResponseEntity<ProgramskiJezikModel> getById(@PathVariable int id) {
+    public ResponseEntity<ApiWrapper<ProgramskiJezikModel>> getById(@PathVariable int id) {
         return programskiJeziciService.findById(id)
-                .map(ResponseEntity::ok)
+                .map(language -> ResponseEntity.ok(new ApiWrapper<>(language)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/getByName")
-    public List<ProgramskiJezikModel> findAllByName(
+    public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByName(
             @RequestParam String name) {
-        return programskiJeziciService.findAllByName(name);
+        List<ProgramskiJezikModel> all = programskiJeziciService.findAllByName(name);
+        return ResponseEntity.ok(new ApiWrapper<>(all));
     }
 
     @GetMapping("/getByYearCreated")
-    public List<ProgramskiJezikModel> findAllByYearCreated(
+    public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByYearCreated(
             @RequestParam int yearCreated) {
-        return programskiJeziciService.findAllByYearCreated(yearCreated);
+        List<ProgramskiJezikModel> all = programskiJeziciService.findAllByYearCreated(yearCreated);
+        return ResponseEntity.ok(new ApiWrapper<>(all));
     }
 
     @GetMapping("/getByCreator")
-    public List<ProgramskiJezikModel> findAllByCreator(
+    public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByCreator(
             @RequestParam String creator) {
-        return programskiJeziciService.findAllByCreator(creator);
+        List<ProgramskiJezikModel> all = programskiJeziciService.findAllByCreator(creator);
+        return ResponseEntity.ok(new ApiWrapper<>(all));
     }
 
     @GetMapping("/getByDescription")
-    public List<ProgramskiJezikModel> findAllByDescription(
+    public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByDescription(
             @RequestParam String description) {
-        return programskiJeziciService.findAllByDescription(description);
+        List<ProgramskiJezikModel> all = programskiJeziciService.findAllByDescription(description);
+        return ResponseEntity.ok(new ApiWrapper<>(all));
     }
 
     @GetMapping("/getByWebsite")
-    public List<ProgramskiJezikModel> findAllByWebsite(
+    public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByWebsite(
             @RequestParam String website) {
-        return programskiJeziciService.findAllByWebsite(website);
+        List<ProgramskiJezikModel> all = programskiJeziciService.findAllByWebsite(website);
+        return ResponseEntity.ok(new ApiWrapper<>(all));
     }
 
     @GetMapping("/getByTypeChecking")
-    public List<ProgramskiJezikModel> findAllByTypeChecking(
+    public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByTypeChecking(
             @RequestParam String typeChecking) {
-        return programskiJeziciService.findAllByTypeChecking(typeChecking);
+        List<ProgramskiJezikModel> all = programskiJeziciService.findAllByTypeChecking(typeChecking);
+        return ResponseEntity.ok(new ApiWrapper<>(all));
     }
 
     @GetMapping("/getByStrength")
-    public List<ProgramskiJezikModel> findAllByStrength(
+    public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByStrength(
             @RequestParam String strength) {
-        return programskiJeziciService.findAllByStrength(strength);
+        List<ProgramskiJezikModel> all = programskiJeziciService.findAllByStrength(strength);
+        return ResponseEntity.ok(new ApiWrapper<>(all));
     }
 
     @GetMapping("/getByStyle")
-    public List<ProgramskiJezikModel> findAllByStyle(
+    public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByStyle(
             @RequestParam String style) {
-        return programskiJeziciService.findAllByStyle(style);
+        List<ProgramskiJezikModel> all = programskiJeziciService.findAllByStyle(style);
+        return ResponseEntity.ok(new ApiWrapper<>(all));
     }
 
     @GetMapping("/getByWildcard")
-    public List<ProgramskiJezikModel> findAllByWildcard(
+    public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByWildcard(
             @RequestParam String wildcard) {
-        return programskiJeziciService.findAllByWildcard(wildcard);
+        List<ProgramskiJezikModel> all = programskiJeziciService.findAllByWildcard(wildcard);
+        return ResponseEntity.ok(new ApiWrapper<>(all));
     }
 
     @GetMapping("/getByPopularFrameworks")
-    public List<ProgramskiJezikModel> findAllByPopularFrameworks(
+    public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByPopularFrameworks(
             @RequestParam String framework) {
-        return programskiJeziciService.findAllByPopularFrameworks(framework);
+        List<ProgramskiJezikModel> all = programskiJeziciService.findAllByPopularFrameworks(framework);
+        return ResponseEntity.ok(new ApiWrapper<>(all));
     }
 
     @GetMapping("/getByPrimaryUses")
-    public List<ProgramskiJezikModel> findAllByPrimaryUses(
+    public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByPrimaryUses(
             @RequestParam String primaryUse) {
-        return programskiJeziciService.findAllByPrimaryUses(primaryUse);
+        List<ProgramskiJezikModel> all = programskiJeziciService.findAllByPrimaryUses(primaryUse);
+        return ResponseEntity.ok(new ApiWrapper<>(all));
     }
 
     @PostMapping("/postProgramskiJezik")
-    public ResponseEntity<Object> create(@RequestBody ProgramskiJezikModel body) {
+    public ResponseEntity<ApiWrapper<ProgramskiJezikModel>> create(@RequestBody ProgramskiJezikModel body) {
         ProgramskiJezikModel saved = programskiJeziciService.save(body);
-        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ApiWrapper<>(saved));
     }
 
     @DeleteMapping("/deleteProgramskiJezik/{id}")
@@ -117,13 +130,13 @@ public class ProgramskiJeziciController {
     }
 
     @PutMapping("/putProgramskiJezik/{id}")
-    public ResponseEntity<Object> update(
+    public ResponseEntity<ApiWrapper<ProgramskiJezikModel>> update(
             @PathVariable int id,
             @RequestBody ProgramskiJezikModel body
     ) {
         try {
             ProgramskiJezikModel updated = programskiJeziciService.update(id, body);
-            return ResponseEntity.ok(updated);
+            return ResponseEntity.ok(new ApiWrapper<>(updated));
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
