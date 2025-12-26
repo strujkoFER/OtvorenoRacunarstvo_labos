@@ -125,6 +125,60 @@ public class ProgramskiJeziciService {
                 .collect(Collectors.toList());
     }
 
+    public boolean existsById(int id) {
+        return programskiJeziciRepository.existsById(id);
+    }
+
+    public ProgramskiJezikModel save(ProgramskiJezikModel jezik) {
+
+        if (jezik.getTypingDisciplineModel() != null) {
+            jezik.getTypingDisciplineModel()
+                    .setProgramskiJezikModel(jezik);
+        }
+
+        if (jezik.getProgrammingStylesModel() != null) {
+            jezik.getProgrammingStylesModel().forEach(style ->
+                    style.setProgramskiJezikModel(jezik)
+            );
+        }
+
+        return programskiJeziciRepository.save(jezik);
+    }
+
+    public void deleteById(int id) {
+        programskiJeziciRepository.deleteById(id);
+    }
+
+    public ProgramskiJezikModel update(int id, ProgramskiJezikModel putBody) {
+
+        ProgramskiJezikModel existingBody = programskiJeziciRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Language not found"));
+
+        existingBody.setName(putBody.getName());
+        existingBody.setCreator(putBody.getCreator());
+        existingBody.setYearCreated(putBody.getYearCreated());
+        existingBody.setWebsite(putBody.getWebsite());
+        existingBody.setDescription(putBody.getDescription());
+        existingBody.setPopularFrameworks(putBody.getPopularFrameworks());
+        existingBody.setPrimaryUses(putBody.getPrimaryUses());
+
+        if (putBody.getTypingDisciplineModel() != null) {
+            existingBody.setTypingDisciplineModel(putBody.getTypingDisciplineModel());
+            existingBody.getTypingDisciplineModel().setProgramskiJezikModel(existingBody);
+        }
+
+        existingBody.getProgrammingStylesModel().clear();
+
+        putBody.getProgrammingStylesModel().forEach(style -> {
+            style.setProgramskiJezikModel(existingBody);
+            existingBody.getProgrammingStylesModel().add(style);
+        });
+
+        return programskiJeziciRepository.save(existingBody);
+    }
+
+
+
 
 
 }

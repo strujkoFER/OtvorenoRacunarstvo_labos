@@ -1,9 +1,6 @@
 package com.backend.programski_jezici.models;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -68,6 +65,10 @@ public class ProgramskiJezikModel {
     }
 
     public ProgramskiJezikModel() {}
+
+    public int getId() {
+        return this.id;
+    }
 
     public String getName() {
         return name;
@@ -139,4 +140,31 @@ public class ProgramskiJezikModel {
         }
         return list;
     }
+
+    @JsonIgnore
+    public List<ProgrammingStylesModel> getProgrammingStylesModel() {
+        return programmingStylesModel;
+    }
+
+    @JsonProperty("programming_style")
+    public void setProgrammingStylesModel(List<String> styles) {
+        this.programmingStylesModel.clear();
+
+        if (styles == null) return;
+
+        for (String style : styles) {
+            this.programmingStylesModel.add(new ProgrammingStylesModel(style));
+        }
+    }
+
+    public void setTypingDisciplineModel(TypingDisciplineModel typingDisciplineModel) {
+        this.typingDisciplineModel = typingDisciplineModel;
+
+        if (typingDisciplineModel != null) {
+            typingDisciplineModel.setProgramskiJezikModel(this);
+        }
+    }
+
+
+
 }

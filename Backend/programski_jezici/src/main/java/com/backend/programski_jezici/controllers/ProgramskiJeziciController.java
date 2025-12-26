@@ -3,7 +3,8 @@ package com.backend.programski_jezici.controllers;
 import com.backend.programski_jezici.models.ProgramskiJezikModel;
 import com.backend.programski_jezici.services.ProgramskiJeziciService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -91,4 +92,36 @@ public class ProgramskiJeziciController {
             @RequestParam String primaryUse) {
         return programskiJeziciService.findAllByPrimaryUses(primaryUse);
     }
+
+    @PostMapping("/postProgramskiJezik")
+    public ResponseEntity<Object> create(@RequestBody ProgramskiJezikModel body) {
+        ProgramskiJezikModel saved = programskiJeziciService.save(body);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+    }
+
+    @DeleteMapping("/deleteProgramskiJezik/{id}")
+    public ResponseEntity<Object> delete(@PathVariable int id) {
+        if (!programskiJeziciService.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        programskiJeziciService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/putProgramskiJezik/{id}")
+    public ResponseEntity<Object> update(
+            @PathVariable int id,
+            @RequestBody ProgramskiJezikModel body
+    ) {
+        try {
+            ProgramskiJezikModel updated = programskiJeziciService.update(id, body);
+            return ResponseEntity.ok(updated);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+
 }

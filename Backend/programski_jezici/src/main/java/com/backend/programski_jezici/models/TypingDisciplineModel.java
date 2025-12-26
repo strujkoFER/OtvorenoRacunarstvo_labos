@@ -46,5 +46,10 @@ public class TypingDisciplineModel {
     public void setStrength(String strength) {
         this.strength = strength;
     }
+
+    public void setProgramskiJezikModel(ProgramskiJezikModel pj) {
+        this.programskiJezikModel = pj;
+    }
+
 }
 

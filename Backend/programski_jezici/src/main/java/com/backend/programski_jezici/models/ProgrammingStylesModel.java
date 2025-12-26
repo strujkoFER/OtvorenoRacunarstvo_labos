@@ -35,5 +35,14 @@ public class ProgrammingStylesModel {
     public void setStyle(String style) {
         this.style = style;
     }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setProgramskiJezikModel(ProgramskiJezikModel pj) {
+        this.programskiJezikModel = pj;
+    }
+
 }
 
