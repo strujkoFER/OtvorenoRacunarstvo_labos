@@ -27,6 +27,13 @@ public class ProgramskiJeziciController {
         return programskiJeziciService.findAll();
     }
 
+    @GetMapping("getById/{id}")
+    public ResponseEntity<ProgramskiJezikModel> getById(@PathVariable int id) {
+        return programskiJeziciService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @GetMapping("/getByName")
     public List<ProgramskiJezikModel> findAllByName(
             @RequestParam String name) {

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -127,6 +128,10 @@ public class ProgramskiJeziciService {
 
     public boolean existsById(int id) {
         return programskiJeziciRepository.existsById(id);
+    }
+
+    public Optional<ProgramskiJezikModel> findById(int id) {
+        return programskiJeziciRepository.findById(id);
     }
 
     public ProgramskiJezikModel save(ProgramskiJezikModel jezik) {
