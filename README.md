@@ -28,3 +28,14 @@ Engleski
 
 ### Database
 postgresql
+
+### Pokretanje
+
+1. Git clone repository
+2. Napravi postgresql server s portom 5432, userom postgres i passwordom postgres i naparvi tablice u baza dump-u
+3. Otvori frontend i backend zasebno
+4. U fronednu u terminalu napiši "cd ProgramskiJezici"
+5. U terminalu napiši "npm run install"
+6. U frontnedu u package.json je skripta za start. Ili snisni ako možeš na da se pokrene ili u terminal napiši "npm run start"
+7. U backendu napiši u terminal "cd programski_jezici"
+8. U backendu napiši u terminal ".\gradlew bootRun" ili runnaj pomoću IDE ako možeš
