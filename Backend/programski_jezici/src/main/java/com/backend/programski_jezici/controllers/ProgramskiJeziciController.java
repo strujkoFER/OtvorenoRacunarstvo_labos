@@ -3,6 +3,8 @@ package com.backend.programski_jezici.controllers;
 import com.backend.programski_jezici.models.ApiWrapper;
 import com.backend.programski_jezici.models.ProgramskiJezikModel;
 import com.backend.programski_jezici.services.ProgramskiJeziciService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +26,19 @@ public class ProgramskiJeziciController {
     }
 
     @GetMapping("/getAll")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+    })
     public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAll() {
         List<ProgramskiJezikModel> all = programskiJeziciService.findAll();
         return ResponseEntity.ok(new ApiWrapper<>(all, 200));
     }
 
     @GetMapping("getById/{id}")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "404", description = "Not found")
+    })
     public ResponseEntity<ApiWrapper<ProgramskiJezikModel>> getById(@PathVariable int id) {
         return programskiJeziciService.findById(id)
                 .map(language -> ResponseEntity.ok(new ApiWrapper<>(language, 200)))
@@ -37,6 +46,9 @@ public class ProgramskiJeziciController {
     }
 
     @GetMapping("/getByName")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+    })
     public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByName(
             @RequestParam String name) {
         List<ProgramskiJezikModel> all = programskiJeziciService.findAllByName(name);
@@ -44,6 +56,9 @@ public class ProgramskiJeziciController {
     }
 
     @GetMapping("/getByYearCreated")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+    })
     public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByYearCreated(
             @RequestParam int yearCreated) {
         List<ProgramskiJezikModel> all = programskiJeziciService.findAllByYearCreated(yearCreated);
@@ -51,6 +66,9 @@ public class ProgramskiJeziciController {
     }
 
     @GetMapping("/getByCreator")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+    })
     public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByCreator(
             @RequestParam String creator) {
         List<ProgramskiJezikModel> all = programskiJeziciService.findAllByCreator(creator);
@@ -58,6 +76,9 @@ public class ProgramskiJeziciController {
     }
 
     @GetMapping("/getByDescription")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+    })
     public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByDescription(
             @RequestParam String description) {
         List<ProgramskiJezikModel> all = programskiJeziciService.findAllByDescription(description);
@@ -65,6 +86,9 @@ public class ProgramskiJeziciController {
     }
 
     @GetMapping("/getByWebsite")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+    })
     public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByWebsite(
             @RequestParam String website) {
         List<ProgramskiJezikModel> all = programskiJeziciService.findAllByWebsite(website);
@@ -72,6 +96,9 @@ public class ProgramskiJeziciController {
     }
 
     @GetMapping("/getByTypeChecking")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+    })
     public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByTypeChecking(
             @RequestParam String typeChecking) {
         List<ProgramskiJezikModel> all = programskiJeziciService.findAllByTypeChecking(typeChecking);
@@ -79,6 +106,9 @@ public class ProgramskiJeziciController {
     }
 
     @GetMapping("/getByStrength")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+    })
     public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByStrength(
             @RequestParam String strength) {
         List<ProgramskiJezikModel> all = programskiJeziciService.findAllByStrength(strength);
@@ -86,6 +116,9 @@ public class ProgramskiJeziciController {
     }
 
     @GetMapping("/getByStyle")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+    })
     public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByStyle(
             @RequestParam String style) {
         List<ProgramskiJezikModel> all = programskiJeziciService.findAllByStyle(style);
@@ -93,6 +126,9 @@ public class ProgramskiJeziciController {
     }
 
     @GetMapping("/getByWildcard")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+    })
     public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByWildcard(
             @RequestParam String wildcard) {
         List<ProgramskiJezikModel> all = programskiJeziciService.findAllByWildcard(wildcard);
@@ -100,6 +136,9 @@ public class ProgramskiJeziciController {
     }
 
     @GetMapping("/getByPopularFrameworks")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+    })
     public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByPopularFrameworks(
             @RequestParam String framework) {
         List<ProgramskiJezikModel> all = programskiJeziciService.findAllByPopularFrameworks(framework);
@@ -107,6 +146,9 @@ public class ProgramskiJeziciController {
     }
 
     @GetMapping("/getByPrimaryUses")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+    })
     public ResponseEntity<ApiWrapper<List<ProgramskiJezikModel>>> findAllByPrimaryUses(
             @RequestParam String primaryUse) {
         List<ProgramskiJezikModel> all = programskiJeziciService.findAllByPrimaryUses(primaryUse);
@@ -114,12 +156,25 @@ public class ProgramskiJeziciController {
     }
 
     @PostMapping("/postProgramskiJezik")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Created"),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    })
     public ResponseEntity<ApiWrapper<ProgramskiJezikModel>> create(@RequestBody ProgramskiJezikModel body) {
-        ProgramskiJezikModel saved = programskiJeziciService.save(body);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ApiWrapper<>(saved, 201));
+        try {
+            ProgramskiJezikModel saved = programskiJeziciService.save(body);
+            return ResponseEntity.status(HttpStatus.CREATED).body(new ApiWrapper<>(saved, 201));
+        } catch (Exception ex) {
+            ApiWrapper<ProgramskiJezikModel> response = new ApiWrapper<>(null, 500);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
 
     @DeleteMapping("/deleteProgramskiJezik/{id}")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "No Content"),
+            @ApiResponse(responseCode = "404", description = "Not found")
+    })
     public ResponseEntity<Object> delete(@PathVariable int id) {
         if (!programskiJeziciService.existsById(id)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiWrapper<>(null, 404));
@@ -130,6 +185,11 @@ public class ProgramskiJeziciController {
     }
 
     @PutMapping("/putProgramskiJezik/{id}")
+    @DeleteMapping("/deleteProgramskiJezik/{id}")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "404", description = "Not found")
+    })
     public ResponseEntity<ApiWrapper<ProgramskiJezikModel>> update(
             @PathVariable int id,
             @RequestBody ProgramskiJezikModel body

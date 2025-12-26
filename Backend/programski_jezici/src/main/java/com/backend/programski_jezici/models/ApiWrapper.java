@@ -24,6 +24,9 @@ public class ApiWrapper<T> {
             case 405:
                 this.statusMessage = "Method Not Allowed";
                 break;
+            case 500:
+                this.statusMessage = "Internal Server Error";
+                break;
             default:
                 this.statusMessage = null;
         }
